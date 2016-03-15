@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="AngularPractice">
+<head>
+  <title>First Angular Excercise</title>
+  <link href="~/css/html5css3_reset-doctor.css" rel="stylesheet" />
+  <link href="~/css/angularpractice.css" rel="stylesheet" />
+  <script src="~/lib/angular/angular.js"></script>
+  <script src="~/ngapp/app.js"></script>
+</head>
+
+<body>
+<div ng-controller="contactListController as controller">
+  <table class="generatedTable">
+    <thead >
+    <tr>
+      <th ng-repeat="field in controller.contactFields">
+        {{field}}
+      </th>
+    </tr>
+    </thead>
+    <tr ng-repeat="contact in controller.contacts | orderBy: 'name' | startsWith:'name':'M'">
+      <td>{{contact.name | uppercase}}</td>
+      <td>{{contact.phone}}</td>
+      <td>{{contact.email}}</td>
+      <td>{{contact.friendDate | date}}</td>
+    </tr>
+  </table>
+
+  <fieldset id="input">
+    <legend>Add Your Info: </legend>
+    <form ng-submit="controller.submitData(contactName, contactPhone, contactEmail)">
+      <label>
+        Name:
+        <input type="text" name="name" ng-model="contactName"/>
+      </label>
+      <label>
+        Phone:
+        <input type="text" name="phone" ng-model="contactPhone"/>
+      </label>
+      <label>
+        eMail:
+        <input type="email" name="email" ng-model="contactEmail"/>
+      </label>
+      <input type="submit" name="submit" value="Submit"/>
+    </form>
+
+  </fieldset>
+</div>
+
+@*<div ng-repeat="item in dups | unique">
+  
+</div>*@
+</body>
+
+</html>
