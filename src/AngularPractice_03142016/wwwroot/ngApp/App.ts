@@ -28,7 +28,7 @@
         public friendDate: Date;
         constructor(public name: string, public phone: string, public email: string) { this.friendDate = new Date(); }
     }
-    
+
     angular.module("AngularPractice").controller("contactListController", ContactListController);
 
     //FILTER FACTORY
